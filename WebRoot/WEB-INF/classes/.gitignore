@@ -1,3 +1,5 @@
+/org
+/test
 /CKfinderConfig.xml
 /META-INF
 /dbconfig.properties
@@ -5,7 +7,6 @@
 /li
 /log4j.properties
 /lv
-/org
 /spring-minidao.xml
 /spring-mvc-aop.xml
 /spring-mvc-context.xml
@@ -13,5 +14,4 @@
 /spring-mvc-timeTask.xml
 /spring-mvc.xml
 /sysConfig.properties
-/test
 /xjench
