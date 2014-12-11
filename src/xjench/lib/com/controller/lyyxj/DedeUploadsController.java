@@ -95,7 +95,7 @@ public class DedeUploadsController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(DedeUploadsEntity dedeUploads, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		dedeUploads = systemService.getEntity(DedeUploadsEntity.class, dedeUploads.getAid());
+		dedeUploads = systemService.getEntity(DedeUploadsEntity.class, dedeUploads.getId());
 		message = "图片删除成功";
 		dedeUploadsService.delete(dedeUploads);
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
@@ -115,9 +115,9 @@ public class DedeUploadsController extends BaseController {
 	@ResponseBody
 	public AjaxJson save(DedeUploadsEntity dedeUploads, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		if (StringUtil.isNotEmpty(dedeUploads.getAid())) {
+		if (StringUtil.isNotEmpty(dedeUploads.getId())) {
 			message = "图片更新成功";
-			DedeUploadsEntity t = dedeUploadsService.get(DedeUploadsEntity.class, dedeUploads.getAid());
+			DedeUploadsEntity t = dedeUploadsService.get(DedeUploadsEntity.class, dedeUploads.getId());
 			try {
 				MyBeanUtils.copyBeanNotNull2Bean(dedeUploads, t);
 				dedeUploadsService.saveOrUpdate(t);
@@ -142,8 +142,8 @@ public class DedeUploadsController extends BaseController {
 	 */
 	@RequestMapping(params = "addorupdate")
 	public ModelAndView addorupdate(DedeUploadsEntity dedeUploads, HttpServletRequest req) {
-		if (StringUtil.isNotEmpty(dedeUploads.getAid())) {
-			dedeUploads = dedeUploadsService.getEntity(DedeUploadsEntity.class, dedeUploads.getAid());
+		if (StringUtil.isNotEmpty(dedeUploads.getId())) {
+			dedeUploads = dedeUploadsService.getEntity(DedeUploadsEntity.class, dedeUploads.getId());
 			req.setAttribute("dedeUploadsPage", dedeUploads);
 		}
 		return new ModelAndView("xjench/lib/com/lyyxj/dedeUploads");

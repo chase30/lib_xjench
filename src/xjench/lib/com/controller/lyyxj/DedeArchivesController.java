@@ -1,4 +1,6 @@
 package xjench.lib.com.controller.lyyxj;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -23,7 +24,14 @@ import org.jeecgframework.web.system.pojo.base.TSDepart;
 import org.jeecgframework.web.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.google.gson.JsonObject;
+
+import xjench.lib.com.entity.lyyxj.DedeAddonarticleEntity;
 import xjench.lib.com.entity.lyyxj.DedeArchivesEntity;
+import xjench.lib.com.entity.lyyxj.DedeUploadsEntity;
+import xjench.lib.com.json.lyyxj.ArchiveJson;
 import xjench.lib.com.service.lyyxj.DedeArchivesServiceI;
 
 /**   
@@ -147,5 +155,71 @@ public class DedeArchivesController extends BaseController {
 			req.setAttribute("dedeArchivesPage", dedeArchives);
 		}
 		return new ModelAndView("xjench/lib/com/lyyxj/dedeArchives");
+	}
+	
+	/*
+	 
+	 * */
+	@RequestMapping(params = "getArchivelist")
+	public void getallimage(DedeArchivesEntity dedeArchives, HttpServletRequest req,HttpServletResponse rep) {
+		String typeid=req.getParameter("typeid");
+		String pageNo=req.getParameter("pageNo");
+		int type=Integer.parseInt(typeid);
+		int pagen=Integer.parseInt(pageNo);
+		int pagetotal=dedeArchivesService.getDedeArchivePageCount(type);
+		List<DedeArchivesEntity> dedearchivelist=dedeArchivesService.getDedeArchives(type, pagen);
+		ArchiveJson archive=new ArchiveJson(dedearchivelist, pagetotal);
+		net.sf.json.JSONObject archivejson=net.sf.json.JSONObject.fromObject(archive);
+		  rep.setContentType("text/json;charset=UTF-8");
+		  PrintWriter out;
+		try {
+			out = rep.getWriter();
+			  out.println(archivejson.toString());
+			  out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	/*根据id查询影片*/
+	@RequestMapping(params = "getmovie")
+	public void getmovie(HttpServletRequest req,HttpServletResponse rep){
+		String id=req.getParameter("id");
+		int aid=Integer.parseInt(id);
+		DedeAddonarticleEntity dedeonarticle=systemService.getEntity(DedeAddonarticleEntity.class, aid);
+		net.sf.json.JSONObject archivejson=net.sf.json.JSONObject.fromObject(dedeonarticle);
+		  rep.setContentType("text/json;charset=UTF-8");
+		  PrintWriter out;
+		try {
+			out = rep.getWriter();
+			  out.println(archivejson.toString());
+			  out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(params = "getimage")
+	public void getimage(HttpServletRequest req,HttpServletResponse rep){
+		String id=req.getParameter("id");
+		int arcid=Integer.parseInt(id);
+		String hql="from DedeUploadsEntity where arcid=?";
+		Object[] params={arcid};
+		List<DedeUploadsEntity> dedeuploadlist=systemService.findHql(hql, params);
+		net.sf.json.JSONArray uploadjson=net.sf.json.JSONArray.fromObject(dedeuploadlist);
+		  rep.setContentType("text/json;charset=UTF-8");
+		  PrintWriter out;
+		try {
+			out = rep.getWriter();
+			  out.println(uploadjson.toString());
+			  out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

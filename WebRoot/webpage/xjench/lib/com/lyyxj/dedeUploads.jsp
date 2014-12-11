@@ -8,17 +8,16 @@
  </head>
  <body style="overflow-y: hidden" scroll="no">
   <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="dedeUploadsController.do?save">
-			<input id="id" name="id" type="hidden" value="${dedeUploadsPage.id }">
 			<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							aid:
+							id:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="aid" name="aid" 
-							   value="${dedeUploadsPage.aid}" datatype="n">
+						<input class="inputxt" id="id" name="id" 
+							   value="${dedeUploadsPage.id}" datatype="n">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>

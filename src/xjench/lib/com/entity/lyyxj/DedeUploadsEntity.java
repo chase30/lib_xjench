@@ -30,7 +30,7 @@ import javax.persistence.SequenceGenerator;
 @SuppressWarnings("serial")
 public class DedeUploadsEntity implements java.io.Serializable {
 	/**aid*/
-	private java.lang.Integer aid;
+	private java.lang.Integer id;
 	/**arcid*/
 	private java.lang.Integer arcid;
 	/**title*/
@@ -42,17 +42,19 @@ public class DedeUploadsEntity implements java.io.Serializable {
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  aid
 	 */
-	@Column(name ="AID",nullable=false,precision=10,scale=0)
-	public java.lang.Integer getAid(){
-		return this.aid;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="ID",nullable=false,precision=10,scale=0)
+	public java.lang.Integer getId(){
+		return this.id;
 	}
 
 	/**
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  aid
 	 */
-	public void setAid(java.lang.Integer aid){
-		this.aid = aid;
+	public void setId(java.lang.Integer id){
+		this.id = id;
 	}
 	/**
 	 *方法: 取得java.lang.Integer

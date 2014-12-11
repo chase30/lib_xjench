@@ -8,7 +8,6 @@
  </head>
  <body style="overflow-y: hidden" scroll="no">
   <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="dedeAddonarticleController.do?save">
-			<input id="id" name="id" type="hidden" value="${dedeAddonarticlePage.id }">
 			<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
 				<tr>
 					<td align="right">
@@ -17,8 +16,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="aid" name="aid" 
-							   value="${dedeAddonarticlePage.aid}" datatype="n">
+						<input class="inputxt" id="id" name="id" 
+							   value="${dedeAddonarticlePage.id}" datatype="n">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>

@@ -95,7 +95,7 @@ public class DedeAddonarticleController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(DedeAddonarticleEntity dedeAddonarticle, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		dedeAddonarticle = systemService.getEntity(DedeAddonarticleEntity.class, dedeAddonarticle.getAid());
+		dedeAddonarticle = systemService.getEntity(DedeAddonarticleEntity.class, dedeAddonarticle.getId());
 		message = "视频集合删除成功";
 		dedeAddonarticleService.delete(dedeAddonarticle);
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
@@ -115,9 +115,9 @@ public class DedeAddonarticleController extends BaseController {
 	@ResponseBody
 	public AjaxJson save(DedeAddonarticleEntity dedeAddonarticle, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		if (StringUtil.isNotEmpty(dedeAddonarticle.getAid())) {
+		if (StringUtil.isNotEmpty(dedeAddonarticle.getId())) {
 			message = "视频集合更新成功";
-			DedeAddonarticleEntity t = dedeAddonarticleService.get(DedeAddonarticleEntity.class, dedeAddonarticle.getAid());
+			DedeAddonarticleEntity t = dedeAddonarticleService.get(DedeAddonarticleEntity.class, dedeAddonarticle.getId());
 			try {
 				MyBeanUtils.copyBeanNotNull2Bean(dedeAddonarticle, t);
 				dedeAddonarticleService.saveOrUpdate(t);
@@ -142,8 +142,8 @@ public class DedeAddonarticleController extends BaseController {
 	 */
 	@RequestMapping(params = "addorupdate")
 	public ModelAndView addorupdate(DedeAddonarticleEntity dedeAddonarticle, HttpServletRequest req) {
-		if (StringUtil.isNotEmpty(dedeAddonarticle.getAid())) {
-			dedeAddonarticle = dedeAddonarticleService.getEntity(DedeAddonarticleEntity.class, dedeAddonarticle.getAid());
+		if (StringUtil.isNotEmpty(dedeAddonarticle.getId())) {
+			dedeAddonarticle = dedeAddonarticleService.getEntity(DedeAddonarticleEntity.class, dedeAddonarticle.getId());
 			req.setAttribute("dedeAddonarticlePage", dedeAddonarticle);
 		}
 		return new ModelAndView("xjench/lib/com/lyyxj/dedeAddonarticle");

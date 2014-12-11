@@ -4,8 +4,7 @@
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
   <t:datagrid name="dedeUploadsList" title="图片" actionUrl="dedeUploadsController.do?datagrid" idField="id" fit="true">
-   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
-   <t:dgCol title="aid" field="aid" ></t:dgCol>
+   <t:dgCol title="编号" field="id"></t:dgCol>
    <t:dgCol title="arcid" field="arcid" ></t:dgCol>
    <t:dgCol title="title" field="title" ></t:dgCol>
    <t:dgCol title="url" field="url" ></t:dgCol>

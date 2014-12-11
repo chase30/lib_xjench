@@ -119,7 +119,9 @@
 						<value>repairController.do?repair</value>
 						<value>repairController.do?deleteAndRepair</value>	
 						<value>driverController.do?datagr</value>
-						
+						<value>dedeArchivesController.do?getArchivelist</value>
+						<value>dedeArchivesController.do?getmovie</value>
+						<value>dedeArchivesController.do?getimage</value>
 					</list>
 				</property>
 			</bean>

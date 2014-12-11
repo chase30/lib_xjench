@@ -4,8 +4,7 @@
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
   <t:datagrid name="dedeAddonarticleList" title="视频集合" actionUrl="dedeAddonarticleController.do?datagrid" idField="id" fit="true">
-   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
-   <t:dgCol title="视频id" field="aid" ></t:dgCol>
+   <t:dgCol title="视频id" field="id" ></t:dgCol>
    <t:dgCol title="typeid" field="typeid" ></t:dgCol>
    <t:dgCol title="body" field="body" ></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>

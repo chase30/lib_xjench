@@ -30,7 +30,7 @@ import javax.persistence.SequenceGenerator;
 @SuppressWarnings("serial")
 public class DedeAddonarticleEntity implements java.io.Serializable {
 	/**视频id*/
-	private java.lang.Integer aid;
+	private java.lang.Integer id;
 	/**typeid*/
 	private java.lang.Integer typeid;
 	/**body*/
@@ -40,17 +40,19 @@ public class DedeAddonarticleEntity implements java.io.Serializable {
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  视频id
 	 */
-	@Column(name ="AID",nullable=false,precision=10,scale=0)
-	public java.lang.Integer getAid(){
-		return this.aid;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="ID",nullable=false,precision=10,scale=0)
+	public java.lang.Integer getId(){
+		return this.id;
 	}
 
 	/**
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  视频id
 	 */
-	public void setAid(java.lang.Integer aid){
-		this.aid = aid;
+	public void setId(java.lang.Integer aid){
+		this.id = aid;
 	}
 	/**
 	 *方法: 取得java.lang.Integer
