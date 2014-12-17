@@ -122,6 +122,8 @@
 						<value>dedeArchivesController.do?getArchivelist</value>
 						<value>dedeArchivesController.do?getmovie</value>
 						<value>dedeArchivesController.do?getimage</value>
+						<value>dedeArchivesController.do?getAllsheyin</value>
+						<value>dedeArchivesController.do?videohtml</value>
 					</list>
 				</property>
 			</bean>

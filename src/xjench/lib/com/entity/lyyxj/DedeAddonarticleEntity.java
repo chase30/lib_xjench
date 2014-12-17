@@ -51,8 +51,8 @@ public class DedeAddonarticleEntity implements java.io.Serializable {
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  视频id
 	 */
-	public void setId(java.lang.Integer aid){
-		this.id = aid;
+	public void setId(java.lang.Integer id){
+		this.id = id;
 	}
 	/**
 	 *方法: 取得java.lang.Integer

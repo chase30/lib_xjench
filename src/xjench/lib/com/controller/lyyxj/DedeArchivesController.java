@@ -183,13 +183,33 @@ public class DedeArchivesController extends BaseController {
 		
 	}
 	
-	
+	@RequestMapping(params = "getAllsheyin")
+	public void getallimagesheyin(DedeArchivesEntity dedeArchives, HttpServletRequest req,HttpServletResponse rep) {
+		String typeid=req.getParameter("typeid");
+		int type=Integer.parseInt(typeid);
+		int pagetotal=1;
+		String hql="from DedeArchivesEntity where typeid=? order by sortrank desc";
+		List<DedeArchivesEntity> dedearchivelist=systemService.findHql(hql, new Object[]{type});
+		ArchiveJson archive=new ArchiveJson(dedearchivelist, pagetotal);
+		net.sf.json.JSONObject archivejson=net.sf.json.JSONObject.fromObject(archive);
+		  rep.setContentType("text/json;charset=UTF-8");
+		  PrintWriter out;
+		try {
+			out = rep.getWriter();
+			  out.println(archivejson.toString());
+			  out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	/*根据id查询影片*/
 	@RequestMapping(params = "getmovie")
 	public void getmovie(HttpServletRequest req,HttpServletResponse rep){
 		String id=req.getParameter("id");
 		int aid=Integer.parseInt(id);
-		DedeAddonarticleEntity dedeonarticle=systemService.getEntity(DedeAddonarticleEntity.class, aid);
+		DedeAddonarticleEntity dedeonarticle=systemService.getEntity(DedeAddonarticleEntity.class,aid);
 		net.sf.json.JSONObject archivejson=net.sf.json.JSONObject.fromObject(dedeonarticle);
 		  rep.setContentType("text/json;charset=UTF-8");
 		  PrintWriter out;
@@ -222,4 +242,16 @@ public class DedeArchivesController extends BaseController {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@RequestMapping(params = "videohtml")
+	public ModelAndView getvideohtml(HttpServletRequest req) {
+		String url=req.getParameter("url");
+		if(url!=null&url.trim().endsWith("")==false){
+			req.setAttribute("videourl",url);
+		}
+		return new ModelAndView("xjench/lib/com/lyyxj/video");
+	}
+	
+	
 }
