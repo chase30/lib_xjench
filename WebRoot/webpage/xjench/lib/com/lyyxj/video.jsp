@@ -10,8 +10,9 @@
 		<title></title>
 	</head>
 	<body>
+	<div></div>
 		 <div style="text-align: center;">
-	<embed allowfullscreen="true" allowscriptaccess="always" height="500" width="100%" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" src="${url }" type="application/x-shockwave-flash" width="540"></embed></div>
+	<embed allowfullscreen="true" allowscriptaccess="always" height="500" width="100%" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" src="${videourl }" type="application/x-shockwave-flash" ></embed></div>
 </div>
 	</body>
 </html>

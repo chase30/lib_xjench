@@ -1,6 +1,8 @@
 package xjench.lib.com.controller.lyyxj;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -246,10 +248,18 @@ public class DedeArchivesController extends BaseController {
 	
 	@RequestMapping(params = "videohtml")
 	public ModelAndView getvideohtml(HttpServletRequest req) {
-		String url=req.getParameter("url");
-		if(url!=null&url.trim().endsWith("")==false){
-			req.setAttribute("videourl",url);
+	
+		try {
+			String url=new String(req.getParameter("url").getBytes("iso8859_1"));
+			String urlencode=URLDecoder.decode(url,"utf-8");
+				req.setAttribute("videourl",urlencode);
+		
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		
 		return new ModelAndView("xjench/lib/com/lyyxj/video");
 	}
 	

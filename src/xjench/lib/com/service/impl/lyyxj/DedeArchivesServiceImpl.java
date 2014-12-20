@@ -14,7 +14,7 @@ import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
 @Transactional
 public class DedeArchivesServiceImpl extends CommonServiceImpl implements DedeArchivesServiceI {
 	
-	private static int itemCountSinglePage=10;
+	private static int itemCountSinglePage=16;
 	/**获取相应页数的数据*/
 	public List<DedeArchivesEntity> getDedeArchives(int typeid, int pageNo) {
 		List<DedeArchivesEntity> DedeArchivesList=findHql("from DedeArchivesEntity where typeid=? order by sortrank desc", new Object[]{typeid});
