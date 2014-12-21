@@ -6,7 +6,7 @@
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="名字" field="name" ></t:dgCol>
    <t:dgCol title="视频链接" field="videosrc" ></t:dgCol>
-   <t:dgCol title="封面图链接" field="img" ></t:dgCol>
+   <t:dgCol title="封面图链接" field="img" imageSize="90,90"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
    <t:dgDelOpt title="删除" url="dedeMegagameinfoController.do?del&id={id}" />
    <t:dgToolBar title="录入" icon="icon-add" url="dedeMegagameinfoController.do?addorupdate" funname="add"></t:dgToolBar>

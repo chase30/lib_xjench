@@ -4,7 +4,7 @@
 <html>
  <head>
   <title>大赛通知</title>
-  <t:base type="jquery,easyui,tools,DatePicker"></t:base>
+  <t:base type="ckfinder,ckeditor,jquery,easyui,tools,DatePicker"></t:base>
  </head>
  <body style="overflow-y: hidden" scroll="no">
   <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="dedeMegagameinfoController.do?save">
@@ -41,9 +41,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="img" name="img" ignore="ignore"
-							   value="${dedeMegagameinfoPage.img}">
-						<span class="Validform_checktip"></span>
+						<t:ckfinder name="img"  uploadType="Images" value="${dedeMegagameinfoPage.img}" width="80" height="60" buttonClass="ui-button" buttonValue="上传图片"></t:ckfinder>
 					</td>
 				</tr>
 			</table>

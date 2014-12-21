@@ -271,7 +271,11 @@ public class DedeArchivesController extends BaseController {
 		if(megelist.size()!=0){
 			 mege=megelist.get(0);
 		}else{
-			mege=null;
+			mege=new DedeMegagameinfoEntity();
+			mege.setId("ss");
+			mege.setImg("http://www.baidu.com");
+			mege.setVideosrc("");
+			mege.setName("NULL");
 		}
 		net.sf.json.JSONObject uploadjson=net.sf.json.JSONObject.fromObject(mege);
 		  rep.setContentType("text/json;charset=UTF-8");
