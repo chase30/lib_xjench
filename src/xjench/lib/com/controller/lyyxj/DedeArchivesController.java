@@ -32,6 +32,7 @@ import com.google.gson.JsonObject;
 
 import xjench.lib.com.entity.lyyxj.DedeAddonarticleEntity;
 import xjench.lib.com.entity.lyyxj.DedeArchivesEntity;
+import xjench.lib.com.entity.lyyxj.DedeMegagameinfoEntity;
 import xjench.lib.com.entity.lyyxj.DedeUploadsEntity;
 import xjench.lib.com.json.lyyxj.ArchiveJson;
 import xjench.lib.com.service.lyyxj.DedeArchivesServiceI;
@@ -261,6 +262,28 @@ public class DedeArchivesController extends BaseController {
 		
 		
 		return new ModelAndView("xjench/lib/com/lyyxj/video");
+	}
+	
+	@RequestMapping(params = "getmessage")
+	public void getinfo(HttpServletRequest req,HttpServletResponse rep){
+		List<DedeMegagameinfoEntity> megelist=systemService.getList(DedeMegagameinfoEntity.class);
+		DedeMegagameinfoEntity mege;
+		if(megelist.size()!=0){
+			 mege=megelist.get(0);
+		}else{
+			mege=null;
+		}
+		net.sf.json.JSONObject uploadjson=net.sf.json.JSONObject.fromObject(mege);
+		  rep.setContentType("text/json;charset=UTF-8");
+		  PrintWriter out;
+		try {
+			out = rep.getWriter();
+			  out.println(uploadjson.toString());
+			  out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
