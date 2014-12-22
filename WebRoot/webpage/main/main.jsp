@@ -3,7 +3,7 @@
 <!DOCTYPE html >
 <html>
 <head>
-<title>基于智能车牌识别的违章信息管理系统</title>
+<title>xjench</title>
 <t:base type="jquery,easyui,tools,DatePicker,autocomplete"></t:base>
 <link rel="shortcut icon" href="images/favicon.ico">
 <style type="text/css">
